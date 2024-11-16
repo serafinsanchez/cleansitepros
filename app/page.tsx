@@ -10,16 +10,25 @@ export default function Home() {
       {/* Header */}
       <header className="bg-white dark:bg-gray-900 py-4 px-4 border-b border-gray-200 dark:border-gray-800">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-            CleanSitePros
-          </Link>
+          <div className="flex flex-col">
+            <Link href="/" className="flex items-baseline">
+              <span className="text-2xl font-bold">
+                <span className="bg-gradient-to-r from-emerald-500 to-blue-600 bg-clip-text text-transparent">Cleaner</span>
+                <span className="text-gray-900 dark:text-white">Sites</span>
+              </span>
+              <span className="ml-1 text-blue-600 dark:text-blue-400">™</span>
+            </Link>
+            <span className="text-sm text-gray-600 dark:text-gray-400 mt-0.5">
+              Beautiful websites for cleaning businesses
+            </span>
+          </div>
         </div>
       </header>
 
       {/* Hero Section - Split Design with Animation */}
       <section className="min-h-[90vh] relative overflow-hidden">
         {/* Background Split Effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-cyan-500 clip-diagonal"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-blue-600 clip-diagonal"></div>
         <div className="absolute inset-0 bg-white dark:bg-gray-900 clip-diagonal-complement"></div>
         
         <div className="max-w-7xl mx-auto px-4 py-12 sm:py-20 relative">
@@ -38,7 +47,7 @@ export default function Home() {
               {/* Improved heading hierarchy and contrast */}
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.1] mb-6 animate-fade-in-up animation-delay-150 text-heading" id="main-heading">
                 Get Premium Cleaning Clients
-                <span className="block text-cyan-200 my-2">Without the Cost</span>
+                <span className="block text-emerald-200 my-2">Without the Cost</span>
               </h1>
               
               {/* Better text contrast */}
@@ -65,13 +74,13 @@ export default function Home() {
               <div className="flex flex-col gap-4 animate-fade-in-up animation-delay-600">
                 <Link
                   href="/waitlist"
-                  className="inline-flex items-center justify-center px-6 sm:px-8 py-4 bg-white text-blue-700 rounded-full font-semibold text-lg hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300"
+                  className="inline-flex items-center justify-center px-6 sm:px-8 py-4 bg-white text-emerald-600 rounded-full font-semibold text-lg hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-300"
                   aria-label="Join the waitlist for your free website"
                 >
                   <span>Claim Your Free Website Now</span>
                 </Link>
                 <div className="flex flex-col items-center gap-2">
-                  <p className="text-sm text-blue-100 text-center">
+                  <p className="text-sm text-emerald-100 text-center">
                     <span className="font-semibold">⚡️ Limited Time Offer:</span> Only 17 Free Websites Left
                   </p>
                   <p className="text-xs text-blue-100/80">
@@ -82,7 +91,7 @@ export default function Home() {
             </div>
 
             {/* Right Content - Website Preview Showcase */}
-            <div className="relative order-first md:order-last animate-fade-in-up animation-delay-600">
+            <div className="relative order-first md:order-last animate-fade-in-up animation-delay-600 hidden md:block">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white dark:bg-gray-800">
                 {/* Browser-like header */}
                 <div className="bg-gray-100 dark:bg-gray-900 p-2 flex items-center gap-2 border-b border-gray-200 dark:border-gray-700">
@@ -101,7 +110,7 @@ export default function Home() {
                 {/* Website Preview Content */}
                 <div className="relative h-[400px] w-full bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 overflow-hidden">
                   {/* Hero Section Preview */}
-                  <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-r from-blue-600 to-cyan-500 flex items-center justify-center">
+                  <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-r from-emerald-500 to-blue-600 flex items-center justify-center">
                     <div className="w-48 h-6 bg-white/20 rounded-lg animate-pulse"></div>
                   </div>
 
@@ -173,7 +182,7 @@ export default function Home() {
 
               {/* Stats Cards */}
               <div className="absolute -right-8 top-8 bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg transform rotate-3 animate-float">
-                <div className="text-2xl font-bold text-blue-600">+127%</div>
+                <div className="text-2xl font-bold text-emerald-600">+127%</div>
                 <div className="text-sm text-gray-600">More Bookings</div>
               </div>
               
@@ -441,16 +450,16 @@ export default function Home() {
       </section>
 
       {/* Bottom CTA Section */}
-      <section className="bg-blue-600 text-white py-20 px-4 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-emerald-500 to-blue-600 text-white py-20 px-4 relative overflow-hidden">
         {/* Animated Background Pattern */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_25%,rgba(255,255,255,0.1)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.1)_75%)] bg-[length:64px_64px] animate-pattern"></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-600/95 to-cyan-600/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-blue-600"></div>
         </div>
 
         {/* Animated Shapes */}
-        <div className="absolute top-0 left-0 w-72 h-72 bg-blue-500/30 rounded-full mix-blend-multiply filter blur-xl animate-float opacity-70 -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-cyan-500/30 rounded-full mix-blend-multiply filter blur-xl animate-float animation-delay-500 opacity-70 translate-x-1/2 translate-y-1/2"></div>
+        <div className="absolute top-0 left-0 w-72 h-72 bg-emerald-500/30 rounded-full mix-blend-multiply filter blur-xl animate-float opacity-70 -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-500/30 rounded-full mix-blend-multiply filter blur-xl animate-float animation-delay-500 opacity-70 translate-x-1/2 translate-y-1/2"></div>
 
         {/* Content */}
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -475,7 +484,7 @@ export default function Home() {
           <div className="space-y-6 animate-fade-in-up animation-delay-300">
             <Link
               href="/waitlist"
-              className="group relative inline-flex items-center px-8 py-4 rounded-full bg-white text-blue-600 hover:bg-blue-50 font-semibold transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] text-lg"
+              className="group relative inline-flex items-center px-8 py-4 rounded-full bg-white text-emerald-600 hover:bg-emerald-50 font-semibold transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] text-lg"
             >
               <span className="relative z-10">Get Your Free Website Before Spots Fill Up</span>
               <svg 

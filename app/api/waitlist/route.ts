@@ -1,61 +1,52 @@
 import { NextResponse } from 'next/server'
-import { google } from 'googleapis'
+import fs from 'fs/promises'
+import path from 'path'
 
-// Google Sheets setup
-const auth = new google.auth.GoogleAuth({
-  credentials: {
-    client_email: process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
-    private_key: process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n')
-  },
-  scopes: ['https://www.googleapis.com/auth/spreadsheets']
-})
-
-const sheets = google.sheets({ version: 'v4', auth })
-const SPREADSHEET_ID = process.env.GOOGLE_SHEETS_SPREADSHEET_ID
-
-export async function POST(req: Request) {
+export async function POST(request: Request) {
   try {
-    const body = await req.json()
+    const data = await request.json()
     
-    // Get the sheet name
-    const spreadsheet = await sheets.spreadsheets.get({
-      spreadsheetId: SPREADSHEET_ID
-    })
-    const firstSheet = spreadsheet.data.sheets?.[0]
-    const sheetName = firstSheet?.properties?.title || 'Sheet1'
-
-    // Add timestamp
-    const timestamp = new Date().toISOString()
-
-    // Append to Google Sheet
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: SPREADSHEET_ID,
-      range: `${sheetName}!A:J`,
-      valueInputOption: 'USER_ENTERED',
-      requestBody: {
-        values: [[
-          timestamp,
-          body.firstName,
-          body.lastName,
-          body.businessName,
-          body.email,
-          body.city,
-          body.state,
-          body.zipcode,
-          body.businessType,
-          body.notes || ''
-        ]]
+    // Validate required fields
+    const requiredFields = ['firstName', 'lastName', 'businessName', 'email', 'city', 'state', 'zipcode', 'businessType']
+    for (const field of requiredFields) {
+      if (!data[field]) {
+        return NextResponse.json(
+          { error: `${field} is required` },
+          { status: 400 }
+        )
       }
-    })
+    }
 
-    return NextResponse.json(
-      { message: 'Successfully joined waitlist' },
-      { status: 201 }
-    )
+    // Create submission with timestamp
+    const submission = {
+      ...data,
+      submittedAt: new Date().toISOString(),
+    }
+
+    // Get the path to waitlist.json
+    const filePath = path.join(process.cwd(), 'data', 'waitlist.json')
+    
+    // Read existing submissions
+    let submissions = []
+    try {
+      const fileContent = await fs.readFile(filePath, 'utf-8')
+      submissions = JSON.parse(fileContent)
+    } catch (error) {
+      // File doesn't exist or is empty, start with empty array
+    }
+
+    // Add new submission
+    submissions.push(submission)
+
+    // Write back to file
+    await fs.writeFile(filePath, JSON.stringify(submissions, null, 2))
+
+    return NextResponse.json({ success: true }, { status: 200 })
+    
   } catch (error) {
     console.error('Waitlist submission error:', error)
     return NextResponse.json(
-      { error: 'Failed to join waitlist' },
+      { error: 'Failed to process submission' },
       { status: 500 }
     )
   }

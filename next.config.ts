@@ -1,7 +1,11 @@
-import type { NextConfig } from "next";
+import { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  output: 'standalone',
+  serverExternalPackages: ['sharp'], // Updated from serverComponentsExternalPackages
+  async headers() {
+    return [];
+  }
+}
 
 export default nextConfig;

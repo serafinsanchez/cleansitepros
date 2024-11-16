@@ -5,5 +5,17 @@
     "location": "Denver, CO",
     "businessType": "residential",
     "timestamp": "2024-11-15T21:01:10.624Z"
+  },
+  {
+    "firstName": "Serafin",
+    "lastName": "Sanchez",
+    "businessName": "Test",
+    "email": "serafinmusic@gmail.com",
+    "city": "Arvada",
+    "state": "CO",
+    "zipcode": "80003",
+    "businessType": "residential",
+    "notes": "",
+    "submittedAt": "2024-11-15T23:08:22.828Z"
   }
 ]
